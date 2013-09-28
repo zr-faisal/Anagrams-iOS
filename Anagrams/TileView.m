@@ -8,10 +8,13 @@
 
 #import "TileView.h"
 
-@implementation TileView
+@implementation TileView {
+    
+    int xOffset, yOffset;
+}
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
+    
     NSAssert(NO, @"Use initWithLetter:andSideLength instead");
     return nil;
 }
@@ -41,6 +44,8 @@
         
         self.isMatched = NO;
         _letter = letter;
+        
+        [self setUserInteractionEnabled:YES];
     }
     
     return self;
@@ -53,9 +58,36 @@
     self.transform = CGAffineTransformMakeRotation(rotation);
     
     //move randomly upwards
-    int yOffset = arc4random()%10 - 10;
-    self.center = CGPointMake(self.center.x, self.center.y + yOffset);
+    int yOff = arc4random()%10 - 10;
+    self.center = CGPointMake(self.center.x, self.center.y + yOff);
 }
+
+# pragma mark - Dragging the Tile
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"TileView - %@", @"touchesBegan");
+    CGPoint point = [[touches anyObject] locationInView:self.superview];
+    
+    xOffset = point.x - self.center.x;
+    yOffset = point.x - self.center.y;
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"TileView - %@", @"touchesMoved");
+    CGPoint point = [[touches anyObject] locationInView:self.superview];
+    
+    self.center = CGPointMake(point.x - xOffset, point.y - yOffset);
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"TileView - %@", @"touchesEnded");
+    [self touchesMoved:touches withEvent:event];
+    
+    if(self.tileDragDelegate) {
+        NSLog(@"TileView - %@", @"Delegate method called!");
+        [self.tileDragDelegate tileView:self didDragToPoint:self.center];
+    }
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

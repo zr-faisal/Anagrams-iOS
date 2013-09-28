@@ -13,7 +13,7 @@
 
 @implementation GameController
 
-NSMutableArray *titles;
+NSMutableArray *tiles;
 NSMutableArray *targets;
 
 
@@ -53,12 +53,12 @@ NSMutableArray *targets;
             targetView.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4);
             
             [self.gameView addSubview:targetView];
-            [titles addObject:targetView];
+            [tiles addObject:targetView];
         }
     }
     
     // initializing titles
-    titles = [[NSMutableArray alloc] initWithCapacity:lengthRandom];
+    tiles = [[NSMutableArray alloc] initWithCapacity:lengthRandom];
     
     for(int i=0; i<lengthRandom; i++) {
         
@@ -66,12 +66,12 @@ NSMutableArray *targets;
         
         if(![letter isEqualToString:@" "]) {
             
-            TileView *titleView = [[TileView alloc] initWithLetter:letter andSideLength:tileSide];
-            titleView.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4*3);
-            [titleView randomize];
+            TileView *tileView = [[TileView alloc] initWithLetter:letter andSideLength:tileSide];
+            tileView.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4*3);
+            [tileView randomize];
             
-            [self.gameView addSubview:titleView];
-            [titles addObject:titleView];
+            [self.gameView addSubview:tileView];
+            [tiles addObject:tileView];
         }
     }
 }
