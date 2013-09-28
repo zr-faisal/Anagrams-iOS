@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Underplot ltd. All rights reserved.
 //
 
-#import "TitleView.h"
+#import "TileView.h"
 
-@implementation TitleView
+@implementation TileView
 
 - (id)initWithFrame:(CGRect)frame
 {

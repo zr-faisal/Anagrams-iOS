@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TitleView : UIImageView
+@interface TileView : UIImageView
 
 @property (nonatomic, strong, readonly) NSString *letter;
 @property (nonatomic, assign) BOOL isMatched;

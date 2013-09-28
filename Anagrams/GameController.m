@@ -7,7 +7,7 @@
 //
 
 #import "GameController.h"
-#import "TitleView.h"
+#import "TileView.h"
 #import "TargetView.h"
 #import "config.h"
 
@@ -66,7 +66,7 @@ NSMutableArray *targets;
         
         if(![letter isEqualToString:@" "]) {
             
-            TitleView *titleView = [[TitleView alloc] initWithLetter:letter andSideLength:tileSide];
+            TileView *titleView = [[TileView alloc] initWithLetter:letter andSideLength:tileSide];
             titleView.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4*3);
             [titleView randomize];
             

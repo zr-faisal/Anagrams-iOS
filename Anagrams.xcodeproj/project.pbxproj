@@ -41,7 +41,7 @@
 		D30F368B179C37810021161A /* TargetView.m in Sources */ = {isa = PBXBuildFile; fileRef = D30F368A179C37810021161A /* TargetView.m */; };
 		D31F8F8C179BA5EA004A1181 /* Level.m in Sources */ = {isa = PBXBuildFile; fileRef = D31F8F8B179BA5EA004A1181 /* Level.m */; };
 		D31F8F8F179BAEE4004A1181 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = D31F8F8E179BAEE4004A1181 /* GameController.m */; };
-		D31F8F92179BD42F004A1181 /* TitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31F8F91179BD42F004A1181 /* TitleView.m */; };
+		D31F8F92179BD42F004A1181 /* TileView.m in Sources */ = {isa = PBXBuildFile; fileRef = D31F8F91179BD42F004A1181 /* TileView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,8 +89,8 @@
 		D31F8F8B179BA5EA004A1181 /* Level.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Level.m; sourceTree = "<group>"; };
 		D31F8F8D179BAEE4004A1181 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
 		D31F8F8E179BAEE4004A1181 /* GameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
-		D31F8F90179BD42F004A1181 /* TitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
-		D31F8F91179BD42F004A1181 /* TitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
+		D31F8F90179BD42F004A1181 /* TileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileView.h; sourceTree = "<group>"; };
+		D31F8F91179BD42F004A1181 /* TileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +173,8 @@
 		9C96FD7116D3C026009F7882 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				D31F8F90179BD42F004A1181 /* TitleView.h */,
-				D31F8F91179BD42F004A1181 /* TitleView.m */,
+				D31F8F90179BD42F004A1181 /* TileView.h */,
+				D31F8F91179BD42F004A1181 /* TileView.m */,
 				D30F3689179C37810021161A /* TargetView.h */,
 				D30F368A179C37810021161A /* TargetView.m */,
 			);
@@ -362,7 +362,7 @@
 				9CCA40BD16CFD85A00B16E42 /* ViewController.m in Sources */,
 				D31F8F8C179BA5EA004A1181 /* Level.m in Sources */,
 				D31F8F8F179BAEE4004A1181 /* GameController.m in Sources */,
-				D31F8F92179BD42F004A1181 /* TitleView.m in Sources */,
+				D31F8F92179BD42F004A1181 /* TileView.m in Sources */,
 				D30F368B179C37810021161A /* TargetView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
