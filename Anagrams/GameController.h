@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Level.h"
+#import "TileView.h"
 
-@interface GameController : NSObject
+@interface GameController : NSObject <TileDragDelegate>
 
 @property (nonatomic, weak) UIView *gameView;
 @property (nonatomic, strong) Level *level;

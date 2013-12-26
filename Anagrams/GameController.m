@@ -25,7 +25,7 @@ NSMutableArray *targets;
     int randomIndex = arc4random()%[self.level.anagrams count];
     NSArray* anaPair = self.level.anagrams[randomIndex];
     
-    // loadint words from anagram
+    // loading words from anagram
     NSString *randomWord = anaPair[0];
     int lengthRandom = [randomWord length];
     NSLog(@"RandomWord: %@", randomWord);
@@ -69,9 +69,75 @@ NSMutableArray *targets;
             TileView *tileView = [[TileView alloc] initWithLetter:letter andSideLength:tileSide];
             tileView.center = CGPointMake(xOffset + i*(tileSide + kTileMargin), kScreenHeight/4*3);
             [tileView randomize];
+            tileView.tileDragDelegate = self;
             
             [self.gameView addSubview:tileView];
             [tiles addObject:tileView];
+        }
+    }
+}
+
+- (void)placeTile:(TileView *)tileView atTarget:(TargetView *)targetView {
+    
+    tileView.isMatched = YES;
+    targetView.isMatched = YES;
+    
+    tileView.userInteractionEnabled = NO;
+    
+    [UIView animateWithDuration:0.35
+                          delay:0.00
+                        options:UIViewAnimationOptionCurveEaseOut animations:^{
+                                tileView.center = targetView.center;
+                                tileView.transform = CGAffineTransformIdentity;
+                        }
+                        completion:^(BOOL finished) {
+                                targetView.hidden = YES;
+                        }
+     ];
+}
+
+- (void)isGameFinished {
+    
+    for (TargetView *target in targets) {
+        
+        if (target.isMatched == NO) {
+            return;
+        }
+    }
+    NSLog(@"Game Over!");
+}
+
+#pragma mark - TileView Delegate
+- (void)tileView:(TileView *)tile didDragToPoint:(CGPoint)point {
+    
+    TargetView *targetView = nil;
+    
+    for(TargetView *target in targets) {
+        
+        if (CGRectContainsPoint(target.frame, point)) {
+            
+            targetView = target;
+            break;
+        }
+    }
+    
+    if (targetView != nil) {
+
+        if ([targetView.letter isEqualToString:tile.letter]) {
+            
+            [self placeTile:tile atTarget:targetView];
+            [self isGameFinished];
+        }
+        else {
+            [tile randomize];
+            
+            [UIView animateWithDuration:0.35
+                                  delay:0.00
+                                options:UIViewAnimationOptionCurveEaseOut
+                             animations:^{
+                                 tile.center = CGPointMake(tile.center.x + randomf(-20, 20), tile.center.x + randomf(20, 30));
+                             }
+                             completion:nil];
         }
     }
 }
